@@ -1,8 +1,12 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\TodoController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('todos', [TodoController::class, 'index']);
+
+Route::post('todos', [TodoController::class, 'store']);
+
+Route::patch('todos/{todo}', [TodoController::class, 'update']);
+
+Route::delete('todos/{id}', [TodoController::class, 'destroy'])->whereNumber('id');
