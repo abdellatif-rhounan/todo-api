@@ -9,7 +9,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('todos', function (Blueprint $table) {
-            $table->id();
+            $table->smallIncrements('id');  // 65_535 max
             $table->string('text', 150);
             $table->boolean('completed')->default(false);
             $table->timestamps();
